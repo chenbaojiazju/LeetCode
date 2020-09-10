@@ -5,7 +5,7 @@ package string;
  * @version 1.0
  * @date 2020/9/11 0:37
  */
-public class LongestCommonPrefix {
+public class LongestCommonPrefix14 {
 
     public static void main(String[] args) {
         String[] strs = {"cabc", "ca", "cab"};
