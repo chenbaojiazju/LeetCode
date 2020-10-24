@@ -1,4 +1,4 @@
-package LinkedList;
+package linkedList;
 
 /**
  * 给出两个非空的链表用来表示两个非负的整数。其中，它们各自的位数是按照逆序的方式存储的，并且它们的每个节点只能存储一位数字。
@@ -22,30 +22,30 @@ public class Solution2 {
      * @return
      */
     public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
-        ListNode cur = new ListNode(0);
-        ListNode sentinel = cur;
+        ListNode pre = new ListNode(0);
+        ListNode cur = pre;
+        //循环中需要改变的变量附初始值，用来存取需要进位值
         int carry = 0;
-        while(l1 != null || l2 != null) {
-            //补零
-            int x = l1 == null ? 0 : l1.val;
-            int y = l2 == null ? 0 : l2.val;
+        while (l1 != null || l2 != null || carry != 0) {
+            //取值相加
+            int x = (l1 != null) ? l1.val : 0;
+            int y = (l2 != null) ? l2.val : 0;
             int sum = x + y + carry;
 
-            carry = sum / 10;
-            sum = sum % 10;
-            //新建节点，指针下移
-            cur.next = new ListNode(sum);
-            cur = cur.next;
-            //节点更新，做null判断
-            if(l1 != null)
+            //创建新节点
+            cur.next = new ListNode(sum % 10);
+
+            //更新操作
+            if (l1 != null) {
                 l1 = l1.next;
-            if(l2 != null)
+            }
+            if (l2 != null) {
                 l2 = l2.next;
+            }
+            carry = sum / 10;
+            cur = cur.next;
         }
-        if(carry == 1) {
-            cur.next = new ListNode(carry);
-        }
-        return sentinel.next;
+        return pre.next;
     }
 
     public class ListNode {
