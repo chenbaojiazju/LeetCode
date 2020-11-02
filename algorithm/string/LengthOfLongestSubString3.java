@@ -8,7 +8,7 @@ import java.util.*;
 public class LengthOfLongestSubString3 {
 
     public static void main(String[] args) {
-        String a = "au";
+        String a = "aucc";
         a.isEmpty();
         System.out.println(new LengthOfLongestSubString3().lengthOfLongestSubstring(a));
     }
@@ -16,15 +16,14 @@ public class LengthOfLongestSubString3 {
 
     //使用滑动窗口
     public int lengthOfLongestSubstring(String s) {
-        if (s.isEmpty()) return 0;
+        if (s.isEmpty()) {
+            return 0;
+        }
         Set<Character> chars = new HashSet<>();
-        int l = 0;
         int r = -1;
         int res = 1;
         int len = s.length();
         for (int i = 0; i < s.length(); i++) {
-            l = i;
-            char cur = s.charAt(i);
             //每一次遍历都需要移动窗口，都需要删除哈希表中对应的元素,上一个字符就是对应的重复字符，利用其索引删除
             if (i != 0) {
                 chars.remove(s.charAt(i-1));
