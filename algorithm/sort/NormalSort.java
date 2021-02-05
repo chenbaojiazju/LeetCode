@@ -9,13 +9,39 @@ public class NormalSort {
 
     public static void main(String[] args) {
         int[] data = {4, 8, 6, 3, 5, 10, 2, 7, 3, 5, 1, 9};
-        mergeSort(data, 0, data.length - 1);
+        qs(data, 0, data.length - 1);
         StringBuilder result = new StringBuilder("[");
         for (int a : data) {
             result.append(a + ", ");
         }
         result.setCharAt(result.lastIndexOf(", "), ']');
         System.out.println(result);
+    }
+
+    private static void qs(int[] data, int start, int end) {
+        if (start >= end) {
+            return;
+        }
+        int m = par(data, start, end);
+        qs(data, start, m - 1);
+        qs(data, m + 1, end);
+    }
+
+    private static int par(int[] data, int start, int end) {
+        int stand = data[start];
+        int tail = start;
+        for (int i = start + 1; i <= end; i++) {
+            if (data[i] < stand) {
+                tail++;
+                int temp = data[i];
+                data[i] = data[tail];
+                data[tail] = temp;
+            }
+        }
+        int temp = data[tail];
+        data[tail] = stand;
+        data[start] = temp;
+        return tail;
     }
 
     /**

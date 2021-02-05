@@ -5,6 +5,20 @@
  */
 public class AddInList {
 
+    public static void main(String[] args) {
+        float a = 1.0f;
+        int b = 1;
+        for (int i = 0; i < 29; i++) {
+            System.out.println(i);
+            a = a * 2;
+            b = b * 2;
+            System.out.println(a==b);
+            System.out.println(b);
+            System.out.println(a);
+        }
+
+    }
+
     public ListNode addInList(ListNode head1, ListNode head2) {
         if (head1 == null) return head2;
         if (head2 == null) return head1;
