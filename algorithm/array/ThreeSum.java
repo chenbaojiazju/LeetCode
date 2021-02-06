@@ -37,7 +37,7 @@ public class ThreeSum {
         List<List<Integer>> results = new ArrayList<>();
         if (nums.length < 3) return results;
         for (int i = 0; i < nums.length-2; i++){
-            //以为有序可提前退出
+            //有序可提前退出
             if (nums[i] > 0) break;
             if (i == 0 || nums[i] != nums[i-1]) {
                 int left = i + 1;
@@ -46,7 +46,7 @@ public class ThreeSum {
                 while (left < right) {
                     if (nums[left] + nums[right] == sum) {
                         results.add(Arrays.asList(nums[i], nums[left], nums[right]));
-                        //在满足条件下去重
+                        //在满足条件下去重 ++ 此处不能用，会改变left值，nums[++left] == nums[left] 永远为true
                         while (left < right && nums[left+1] == nums[left]) left++;
                         while (left < right && nums[right-1] == nums[right]) right--;
                         left++;

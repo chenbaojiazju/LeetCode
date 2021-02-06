@@ -8,10 +8,9 @@ package string;
 public class DefanIPaddr1108 {
 
     public static void main(String[] args) {
-        String address = "1.1.1.1";
-        String result = defangIPaddr(address);
-        System.out.println("Origin: " + address);
-        System.out.println("Result: " + result);
+        int[] a = {1, 2, 3, 4};
+        int i = 2;
+        System.out.println(a[++i] == a[i]);
     }
 
     private static String defangIPaddr(String address) {
